@@ -5,7 +5,9 @@
 - Connect to the Internet
 ## How to run
 - Clone the repo `gitclone https://github.com/tuchau1404/manga_translate.git`
+```bash
 cd manga_translate
+```
 - Download [inpainting checkpoint](https://drive.google.com/drive/folders/1gKbaXK1TXiCT3vdgEyfbBsAHoxxb5QEH?usp=sharing) and save in 
 `./backend_inpainting/lama/big-lama/models/best.ckpt`
 ```bash
