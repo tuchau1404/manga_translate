@@ -11,7 +11,6 @@ cd manga_translate
 - Download [inpainting checkpoint](https://drive.google.com/drive/folders/1gKbaXK1TXiCT3vdgEyfbBsAHoxxb5QEH?usp=sharing) and save in 
 `./backend_inpainting/lama/big-lama/models/best.ckpt`
 ```bash
-cd manga_translate
 docker-compose up
 ```
 - To visit the FastAPI documentation of the resulting service, visit http://localhost:8000 and http://localhost:3000 with a web browser.
