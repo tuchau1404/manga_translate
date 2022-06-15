@@ -4,6 +4,7 @@ import json
 import wordninja
 from wand.image import Image
 from wand.display import display
+from wand.drawing import Drawing
 """
           min_y
             |
@@ -117,8 +118,15 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         json.dump(data, f,ensure_ascii=False) 
     
 
-def render(in_json_dir="./output/vi_text,json", in_img_dir ="./output/0_inpainting.png",out_img_dir="./output/0_render.png"):
-    
+def render(in_json_dir="./output/vi_text,json", in_img_dir ="./output/0_inpainting.png",out_img_dir="./output/0_render.png",scale=4):
+    with open(in_json_dir) as f:
+        data = json.load(f)
+    with Image(filename=in_img_dir) as canvas:
+        size = canvas.size()
+        canvas.resize(size[0]*scale,size[1]*scale)
+        with Drawing() as context:
+            
+
 
 
 

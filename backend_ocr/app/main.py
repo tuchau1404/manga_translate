@@ -52,7 +52,7 @@ async def upload(file: UploadFile = File(...)):
 async def upload(file: UploadFile = File(...)):
     try:
         contents = await file.read()
-        file_dir= os.path.join("./input","0.png")
+        file_dir= os.path.join("./input","0_inpainting.png")
         with open(file_dir, 'wb') as f:
             f.write(contents)
     except Exception:
