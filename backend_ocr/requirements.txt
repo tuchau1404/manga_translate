@@ -7,3 +7,4 @@ wand
 protobuf==3.20.0
 python-m
 python-multipart
+wordninja
