@@ -1,0 +1,11 @@
+indir: /home/vivai/deploy_manga/backend_inpainting/input
+outdir: /home/vivai/deploy_manga/backend_inpainting/output
+model:
+  path: /home/vivai/deploy_manga/backend_inpainting/lama/big-lama
+  checkpoint: best.ckpt
+dataset:
+  kind: default
+  img_suffix: .png
+  pad_out_to_modulo: 8
+device: cpu
+out_key: inpainted

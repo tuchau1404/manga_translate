@@ -1,0 +1,3 @@
+- model.path=/home/vivai/deploy_manga/backend_inpainting/lama/big-lama
+- indir=/home/vivai/deploy_manga/backend_inpainting/input
+- outdir=/home/vivai/deploy_manga/backend_inpainting/output
