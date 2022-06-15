@@ -105,6 +105,7 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         index =str(index)
         word_list = data[index]["sentence"]
         for word in word_list:
+            word =word.replace("-","")
             sentence+=word
         # wordnija : fix missing spaces
         word_list = wordninja.split(sentence)
@@ -117,7 +118,7 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         json.dump(data, f,ensure_ascii=False) 
     
 
-def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpainting.png",out_img_dir="./output/0_render.png",scale=4):
+def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpainting.png",out_img_dir="./output/0_render.png",scale=2):
     with open(in_json_dir) as f:
         data = json.load(f)
     with Image(filename=in_img_dir) as canvas:
@@ -132,7 +133,7 @@ def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpaintin
             sentence= data[index]["sentence"]
             font =Font("./fonts/000_10_Cent_Comics_[TeddyBear].ttf")
             canvas.caption(sentence,left=left,top=top,width=width,height=height,font=font,gravity="center",)
-        canvas.resize(size[0]*2,size[1]*2)
+        canvas.resize(size[0],size[1])
         canvas.save(filename=out_img_dir)
             
 

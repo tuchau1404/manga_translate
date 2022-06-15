@@ -8,7 +8,7 @@ def resize(in_dir="./input/",out_dir="./output/"):
     """
     resize and convert images to png format
     """
-    size = (600,840)
+    size = (1440,2016)
     target = '.png'
     list_dir = listdir(in_dir)
     index=0
