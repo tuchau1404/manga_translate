@@ -1,0 +1,32 @@
+version: '3'
+services:
+  backend_ocr:
+    build: ./backend_ocr/
+    ports:
+      - 8000:8000
+    container_name: ocr
+    networks:
+      - deploy_network
+    
+  backend_inpainting:
+    build: ./backend_inpainting/
+    ports:
+      - 8001:8001
+    container_name: inpaingting
+    networks:
+      - deploy_network
+    
+  frontend: 
+    build: ./frontend/
+    depends_on:
+      - back_end
+    container_name: streamlit
+    ports: 
+      - 8501:8501
+    networks:
+      - deploy_network
+networks:
+  deploy_network:
+    driver: bridge
+
+    
