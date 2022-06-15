@@ -37,10 +37,10 @@ def run():
             f.write(resp_predict.content)
         #draw bounding box
         resp_draw = requests.get(BACKEND_OCR_URL+"/draw_bb")
-        im_predict = Image.open(BytesIO(resp_draw.content))
+        im_draw = Image.open(BytesIO(resp_draw.content))
         if check_bb:
             
-            st.image(im_predict, caption="Bouding box")
+            st.image(im_draw, caption="Bouding box")
         #mask
         with st.spinner("Wait for mask..."):
             resp_mask = post_img(BACKEND_OCR_URL+"/create_mask",resp_predict.content)
