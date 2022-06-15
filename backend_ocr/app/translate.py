@@ -1,9 +1,9 @@
-import imp
+import sndhdr
+from googletrans import Translator
 import json
-from re import L
-from socket import PACKET_BROADCAST
-import cv2
-from PIL import Image
+import wordninja
+from wand.image import Image
+from wand.display import display
 """
           min_y
             |
@@ -42,8 +42,8 @@ def take(index,data):
 
 
 
-def collect_text_box():
-    with open('./output/result.json') as f:
+def collect_text_box(in_dir="./output/result.json",out_dir="./output/en_text.json"):
+    with open(in_dir) as f:
         data = json.load(f)
     bounding_box ={}
     bounding_box["0"]={}
@@ -93,28 +93,39 @@ def collect_text_box():
             bounding_box[index]['coordinate']['max_x']=max(xy[0],xy[2],xy[4],xy[6])
             bounding_box[index]['coordinate']['min_y']=min(xy[1],xy[3],xy[5],xy[7])
             bounding_box[index]['coordinate']['max_y']=max(xy[1],xy[3],xy[5],xy[7])
-    
-    # print(bounding_box)  
-    return bounding_box         
-                        
-
-   
+    with open(out_dir, "w") as f:
+        json.dump(bounding_box, f) 
 
 def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
-    pass
+    with open(in_dir) as f:
+        data = json.load(f)
+    translator = Translator()
+    for index in range(0,len(data)):
+        sentence=""
+        index =str(index)
+        word_list = data[index]["sentence"]
+        for word in word_list:
+            sentence+=word
+        # wordnija : fix missing spaces
+        word_list = wordninja.split(sentence)
+        sentence=""
+        for word in word_list:
+            sentence=sentence + word+" "
+        vi_sentence = translator.translate(sentence,dest="vi",src="en")
+        data[index]["sentence"] = vi_sentence.text
+    with open(out_dir, "w",encoding='utf-8') as f:
+        json.dump(data, f,ensure_ascii=False) 
+    
 
 def render(in_json_dir="./output/vi_text,json", in_img_dir ="./output/0_inpainting.png",out_img_dir="./output/0_render.png"):
-    pass
+    
 
 
 
 
 if __name__=="__main__":
-    bounding_box =create_big_box()
-    with open("output/mask_coordinate.json", "w") as f:
-        json.dump(bounding_box, f)
-
-    draw_bound_box(bounding_box)
+    collect_text_box()
+    en2vi()
 
 
     

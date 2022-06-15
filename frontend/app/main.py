@@ -39,7 +39,6 @@ def run():
         resp_draw = requests.get(BACKEND_OCR_URL+"/draw_bb")
         im_draw = Image.open(BytesIO(resp_draw.content))
         if check_bb:
-            
             st.image(im_draw, caption="Bouding box")
         #mask
         with st.spinner("Wait for mask..."):
