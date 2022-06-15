@@ -6,4 +6,4 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./app /code/app
 COPY ./input /code/input
 EXPOSE 8501
-CMD ["streamlit", "run", "./app/ui.py"]
+CMD ["streamlit", "run", "./app/main.py"]

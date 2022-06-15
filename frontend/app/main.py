@@ -6,6 +6,8 @@ from io import BytesIO
 BACKEND_OCR_URL = "http://127.0.0.1:8000"
 BACKEND_INPAINTING_URL= "http://127.0.0.1:3000"
 #Docker Environment
+BACKEND_OCR_URL = "http://backend_ocr:8000"
+BACKEND_INPAINTING_URL= "http://backend_inpainting:3000"
 
 def post_img(url:str, data):
     file = {'file': data}

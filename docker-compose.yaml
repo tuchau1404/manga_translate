@@ -11,8 +11,8 @@ services:
   backend_inpainting:
     build: ./backend_inpainting/
     ports:
-      - 8001:8001
-    container_name: inpaingting
+      - 3000:3000
+    container_name: inpainting
     networks:
       - deploy_network
     

@@ -11,3 +11,8 @@ COPY ./input /code/input
 COPY ./output /code/output
 EXPOSE 3000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "3000"]
+
+
+
+
+
