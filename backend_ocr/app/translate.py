@@ -97,25 +97,7 @@ def collect_text_box():
     # print(bounding_box)  
     return bounding_box         
                         
-def draw_bound_box(bounding_box):
-    """
-    x1,y1-------------------|
-    |                       |   
-    |                       |
-    |                       |
-    |                       |
-    |-------------------x2,y2
-    """
-    im = cv2.imread('test1.jpg',-1)
-    for i in range(len(bounding_box)):
-        
-        x1=int(bounding_box[str(i)]['coordinate']['min_x'])
-        y1=int(bounding_box[str(i)]['coordinate']['min_y'])
-        x2=int(bounding_box[str(i)]['coordinate']['max_x'])
-        y2=int(bounding_box[str(i)]['coordinate']['max_y'])
-        
-        cv2.rectangle(im,(x1,y1),(x2,y2),(0,255,0),3)
-    cv2.imwrite('output/te.jpg',im)
+
    
 
 def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):

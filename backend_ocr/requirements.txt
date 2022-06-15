@@ -4,3 +4,6 @@ googletrans==4.0.0rc1
 fastapi
 uvicorn
 wand
+protobuf==3.20.0
+python-m
+python-multipart
