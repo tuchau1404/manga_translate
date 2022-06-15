@@ -118,7 +118,7 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         json.dump(data, f,ensure_ascii=False) 
     
 
-def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpainting.png",out_img_dir="./output/0_render.png",scale=2):
+def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpainting.png",out_img_dir="./output/0_render.png",scale=3):
     with open(in_json_dir) as f:
         data = json.load(f)
     with Image(filename=in_img_dir) as canvas:
