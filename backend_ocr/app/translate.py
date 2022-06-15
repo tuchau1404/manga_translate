@@ -3,8 +3,7 @@ from googletrans import Translator
 import json
 import wordninja
 from wand.image import Image
-from wand.display import display
-from wand.drawing import Drawing
+from wand.font import Font
 """
           min_y
             |
@@ -118,13 +117,25 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         json.dump(data, f,ensure_ascii=False) 
     
 
-def render(in_json_dir="./output/vi_text,json", in_img_dir ="./output/0_inpainting.png",out_img_dir="./output/0_render.png",scale=4):
+def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpainting.png",out_img_dir="./output/0_render.png",scale=4):
     with open(in_json_dir) as f:
         data = json.load(f)
     with Image(filename=in_img_dir) as canvas:
-        size = canvas.size()
+        size = canvas.size
         canvas.resize(size[0]*scale,size[1]*scale)
-        with Drawing() as context:
+        for index in range(len(data)):
+            index =str(index)
+            left =int(data[index]["coordinate"]["min_x"])*scale
+            top  =int(data[index]["coordinate"]["min_y"])*scale
+            width= (int(data[index]["coordinate"]["max_x"])-int(data[index]["coordinate"]["min_x"]))*scale
+            height= (int(data[index]["coordinate"]["max_y"])- int(data[index]["coordinate"]["min_y"]))*scale
+            sentence= data[index]["sentence"]
+            font =Font("./fonts/000_10_Cent_Comics_[TeddyBear].ttf")
+            canvas.caption(sentence,left=left,top=top,width=width,height=height,font=font,gravity="center",)
+        canvas.resize(size[0]*2,size[1]*2)
+        canvas.save(filename=out_img_dir)
+            
+
             
 
 

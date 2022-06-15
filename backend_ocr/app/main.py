@@ -50,16 +50,20 @@ async def upload(file: UploadFile = File(...)):
 
 @app.post("/text_rendering")
 async def upload(file: UploadFile = File(...)):
-    try:
-        contents = await file.read()
-        file_dir= os.path.join("./input","0_inpainting.png")
-        with open(file_dir, 'wb') as f:
-            f.write(contents)
-    except Exception:
-        return {"message": "There was an error uploading the file(s)"}
-    finally:
-        await file.close() 
-    return FileResponse(path ="./output/0.png")
+    # try:
+    contents = await file.read()
+    file_dir= os.path.join("./input","0_inpainting.png")
+    with open(file_dir, 'wb') as f:
+        f.write(contents)
+    collect_text_box()
+    en2vi()
+    render()
+    os.remove(file_dir)
+    # except Exception:
+    #     return {"message": "There was an error uploading the file(s)"}
+    # finally:
+    #     await file.close() 
+    return FileResponse(path ="./output/0_render.png")
         
 
         
