@@ -1,5 +1,5 @@
 # Manga Translator
-## Prerequisite
+## Prerequisites
 - Install [docker](https://docs.docker.com/get-docker/)
 - Enable [BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/)
 - Connect to the Internet
