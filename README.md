@@ -15,5 +15,7 @@ docker-compose up
 ```
 - To visit the FastAPI documentation of the resulting service, visit http://localhost:8000 and http://localhost:3000 with a web browser.
 To visit the streamlit UI, visit http://localhost:8501.
+## Samples
+![samples](https://i.imgur.com/4Qs2yn9.jpg)
 ## Demo 
 - [Video](https://youtu.be/usfyNl7KHbQ)
