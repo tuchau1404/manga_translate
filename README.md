@@ -38,7 +38,7 @@ manga_translate
 │   ├── lama
 │   │   ├── big-lama   
 │   │   ├── bin
-│   │   ├── configs/prediction
+│   │   ├── configs
 │   │   ├── models
 │   │   └── saicinpainting
 │   ├── Dockerfile
