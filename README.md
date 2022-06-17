@@ -19,7 +19,7 @@ To visit the streamlit UI, visit http://localhost:8501.
 | Original                             | Translated                           |
 | ------------------------------------ | ------------------------------------ |
 | ![](https://i.imgur.com/gcstcVi.png) | ![](https://i.imgur.com/9ETrvUG.jpg) |
-| ![](https://i.imgur.com/gcstcVi.png) | ![](https://i.imgur.com/TDjNC0b.jpg) |
+| ![](https://i.imgur.com/GlSVdLm.jpg) | ![](https://i.imgur.com/TDjNC0b.jpg) |
 | ![](https://i.imgur.com/2HQhb6F.jpg) | ![](https://i.imgur.com/sUt2IB9.jpg) |
 | ![](https://i.imgur.com/3EhU38W.jpg) | ![](https://i.imgur.com/oKvSLam.jpg) |
 ## Demo 
