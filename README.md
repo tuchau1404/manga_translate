@@ -17,6 +17,42 @@ docker-compose up
 ```
 - To visit the FastAPI documentation of the resulting service, visit http://localhost:8000 and http://localhost:3000 with a web browser.
 To visit the streamlit UI, visit http://localhost:8501.
+## Code structure
+```bash
+manga_translate
+├── backend_ocr
+│   ├── app
+│   │   ├── __init__.py   
+│   │   ├── main.py
+│   │   ├── ocr.py
+│   │   └── translate.py
+│   ├── fonts
+│   ├── models
+│   ├── Dockerfile
+│   └── requirements.txt
+├── backend_inpainting
+│   ├── app
+│   │   ├── __init__.py   
+│   │   ├── inpainting.sh
+│   │   └── main.py
+│   ├── lama
+│   │   ├── big-lama   
+│   │   ├── bin
+│   │   ├── configs/prediction
+│   │   ├── models
+│   │   └── saicinpainting
+│   ├── Dockerfile
+│   └── requirements.txt
+├── frontend
+│   ├── app
+│   │   ├── __init__.py   
+│   │   └── main.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── .gitignore
+├── README.md
+└── docker-compose.yaml
+```
 ## Samples
 | Original                             | Translated                           |
 | ------------------------------------ | ------------------------------------ |
