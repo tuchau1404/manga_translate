@@ -101,6 +101,7 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         data = json.load(f)
     translator = Translator()
     for index in range(0,len(data)):
+    
         sentence=""
         index =str(index)
         word_list = data[index]["sentence"]
@@ -112,8 +113,12 @@ def en2vi(in_dir="./output/en_text.json",out_dir="./output/vi_text.json"):
         sentence=""
         for word in word_list:
             sentence=sentence + word+" "
-        vi_sentence = translator.translate(sentence,dest="vi",src="en")
-        data[index]["sentence"] = vi_sentence.text
+        if sentence!= "":
+            vi_sentence = translator.translate(sentence,dest="vi",src="en")
+            data[index]["sentence"] = vi_sentence.text
+        else:
+            data[index]["sentence"]=" "
+
     with open(out_dir, "w",encoding='utf-8') as f:
         json.dump(data, f,ensure_ascii=False) 
     
@@ -128,8 +133,8 @@ def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpaintin
             index =str(index)
             left =int(data[index]["coordinate"]["min_x"])*scale
             top  =int(data[index]["coordinate"]["min_y"])*scale
-            width= (int(data[index]["coordinate"]["max_x"])-int(data[index]["coordinate"]["min_x"]))*scale
-            height= (int(data[index]["coordinate"]["max_y"])- int(data[index]["coordinate"]["min_y"]))*scale
+            width= abs((int(data[index]["coordinate"]["max_x"])-int(data[index]["coordinate"]["min_x"]))*scale)
+            height= abs((int(data[index]["coordinate"]["max_y"])- int(data[index]["coordinate"]["min_y"]))*scale)
             sentence= data[index]["sentence"]
             font =Font("./fonts/000_10_Cent_Comics_[TeddyBear].ttf")
             canvas.caption(sentence,left=left,top=top,width=width,height=height,font=font,gravity="center",)
@@ -144,8 +149,8 @@ def render(in_json_dir="./output/vi_text.json", in_img_dir ="./input/0_inpaintin
 
 
 if __name__=="__main__":
-    collect_text_box()
-    en2vi()
+    pass
+    
 
 
     

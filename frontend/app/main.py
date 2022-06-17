@@ -32,7 +32,7 @@ def run():
     check_inpainting =st.checkbox('Show inpainting image')
     check_translate =st.checkbox('Show translated image',value=True)
 
-    im = st.file_uploader("Select an image",type=['png','jpg'])
+    im = st.file_uploader("Select an image",type=['png','jpg','jpeg'])
     if im is not None:
         #resize and predict_bb
         with st.spinner("Wait for ocr..."):

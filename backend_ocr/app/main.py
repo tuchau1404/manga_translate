@@ -3,7 +3,6 @@
 from fastapi import File, UploadFile, FastAPI
 from fastapi.responses import FileResponse
 import os
-from app.mask import *
 from app.ocr import *
 from app.translate import *
 app = FastAPI()
@@ -16,9 +15,9 @@ async def upload(file: UploadFile = File(...)):
         file_dir= os.path.join("./input","0.png")
         with open(file_dir, 'wb') as f:
             f.write(contents)
-        resize()
-        predict()
-        os.remove(file_dir)
+            resize()
+            predict()
+            os.remove(file_dir)
     except Exception:
         return {"message": "There was an error uploading the file(s)"}
     finally:
@@ -50,19 +49,19 @@ async def upload(file: UploadFile = File(...)):
 
 @app.post("/text_rendering")
 async def upload(file: UploadFile = File(...)):
-    # try:
-    contents = await file.read()
-    file_dir= os.path.join("./input","0_inpainting.png")
-    with open(file_dir, 'wb') as f:
-        f.write(contents)
-    collect_text_box()
-    en2vi()
-    render()
-    os.remove(file_dir)
-    # except Exception:
-    #     return {"message": "There was an error uploading the file(s)"}
-    # finally:
-    #     await file.close() 
+    try:
+        contents = await file.read()
+        file_dir= os.path.join("./input","0_inpainting.png")
+        with open(file_dir, 'wb') as f:
+            f.write(contents)
+        collect_text_box()
+        en2vi()
+        render()
+        os.remove(file_dir)
+    except Exception:
+        return {"message": "There was an error uploading the file(s)"}
+    finally:
+        await file.close() 
     return FileResponse(path ="./output/0_render.png")
         
 
