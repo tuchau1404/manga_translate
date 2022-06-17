@@ -36,7 +36,9 @@ manga_translate
 │   │   ├── inpainting.sh
 │   │   └── main.py
 │   ├── lama
-│   │   ├── big-lama   
+│   │   ├── big-lama  
+│   │   │   └── models
+│   │   │       └── best.ckpt
 │   │   ├── bin
 │   │   ├── configs
 │   │   ├── models
